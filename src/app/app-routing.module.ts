@@ -20,7 +20,8 @@ const routes: Routes = [
   {
     path: "register",
     loadChildren: "./pages/register/register.module#RegisterPageModule"
-  }
+  },
+  { path: 'pelis', loadChildren: './pages/pelis/pelis.module#PelisPageModule' }
 ];
 
 @NgModule({

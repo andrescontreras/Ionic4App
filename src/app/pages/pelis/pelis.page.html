@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My Pelis APP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    [(ngModel)]="term"
+    (ionChange)="searchChanged($event)"
+  ></ion-searchbar>
+  <ion-item>
+    <ion-label>Seleccione el tipo</ion-label>
+    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+      <ion-select-option selected="true" value=""> All </ion-select-option>
+      <ion-select-option value="movie">Peliculas </ion-select-option>
+      <ion-select-option value="series">Series </ion-select-option>
+      <ion-select-option value="episodios"> Episodios </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list>
+    <ion-item button *ngFor="let peli of (results | async)">
+      <ion-avatar slot="start">
+        <img src="{{ peli.Poster }}" alt="{{ peli.Title }}" />
+      </ion-avatar>
+      <ion-label text-wrap>
+        <h3>{{ peli.Title }}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
