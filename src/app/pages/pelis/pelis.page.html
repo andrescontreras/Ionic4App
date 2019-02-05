@@ -1,31 +1,56 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>My Pelis APP</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar
+      [(ngModel)]="term"
+      (ionChange)="searchChanged($event)"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-searchbar
-    [(ngModel)]="term"
-    (ionChange)="searchChanged($event)"
-  ></ion-searchbar>
   <ion-item>
     <ion-label>Seleccione el tipo</ion-label>
     <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
       <ion-select-option selected="true" value=""> All </ion-select-option>
       <ion-select-option value="movie">Peliculas </ion-select-option>
       <ion-select-option value="series">Series </ion-select-option>
-      <ion-select-option value="episodios"> Episodios </ion-select-option>
+      <ion-select-option value="episode"> Episodios </ion-select-option>
     </ion-select>
   </ion-item>
   <ion-list>
-    <ion-item button *ngFor="let peli of (results | async)">
+    <ion-item
+      button
+      *ngFor="let peli of (results | async)"
+      [routerLink]="['/', 'pelis', peli.imdbID]"
+    >
       <ion-avatar slot="start">
-        <img src="{{ peli.Poster }}" alt="{{ peli.Title }}" />
+        <img
+          src="{{ peli.Poster }}"
+          alt="{{ peli.Title }}"
+          *ngIf="peli.Poster != 'N/A'"
+        />
       </ion-avatar>
       <ion-label text-wrap>
         <h3>{{ peli.Title }}</h3>
+        {{ peli.Year }}
       </ion-label>
+      <ion-icon
+        *ngIf="peli.Type === 'movie'"
+        slot="end"
+        name="videocam"
+      ></ion-icon>
+      <ion-icon *ngIf="peli.Type === 'series'" slot="end" name="tv"> </ion-icon>
+      <ion-icon
+        *ngIf="peli.Type === 'episode'"
+        slot="end"
+        name="table-portrait"
+      ></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

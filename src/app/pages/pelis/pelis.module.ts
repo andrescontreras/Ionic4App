@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { PelisPage } from './pelis.page';
+import { PelisPage } from "./pelis.page";
+import { IconPipe } from "src/app/icon.pipe";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: PelisPage
   }
 ];
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PelisPage]
+  declarations: [PelisPage, IconPipe]
 })
 export class PelisPageModule {}

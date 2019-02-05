@@ -22,7 +22,7 @@ export class PeliService {
 
   getDetails(id: string) {
     return this.http.get<IPelis>(
-      `http://www.omdbapi.com/?i=${id}&plot=full&aplikey=${this.apiKey}`
+      `http://www.omdbapi.com/?i=${id}&plot=full&apikey=${this.apiKey}`
     );
   }
 }
