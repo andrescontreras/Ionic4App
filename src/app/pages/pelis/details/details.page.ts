@@ -8,7 +8,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./details.page.scss"]
 })
 export class DetailsPage implements OnInit {
-  content: object = null;
+  content: any = null;
   constructor(
     private peliService: PeliService,
     private activateRoute: ActivatedRoute

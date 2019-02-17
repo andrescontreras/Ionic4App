@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>cronometro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <ion-item color="dark">
+      <ion-label>Tiempo</ion-label>
+      <ion-datetime
+        display-format="mm:ss"
+        placeholder="Tap here"
+        [(ngModel)]="fullTime"
+      ></ion-datetime>
+    </ion-item>
+
+    <circle-progress
+      (onClick)="startTime()"
+      [percent]="percent"
+      [maxPercent]="100"
+      [radius]="radius"
+      [showTitle]="false"
+      [showSubtitle]="false"
+      [showUnits]="false"
+      [outerStrokeWidth]="16"
+      [outerStrokeColor]="'#8000FF'"
+      [showZeroOuterStroke]="false"
+      [backgroundStroke]="'#33003F'"
+      [backgroundStrokeWidth]="3"
+      [outerStrokeGradient]="true"
+      [outerStrokeGradientStopColor]="'#FF00CB'"
+      [showInnerStroke]="false"
+      [animation]="false"
+    ></circle-progress>
+    <p>{{ elapsed.h }}:{{ elapsed.m }}:{{ elapsed.s }}</p>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ng-container *ngIf="timer == false; else running">
+        <ion-fab-button (click)="startTime()">
+          <ion-icon name="play"></ion-icon>
+        </ion-fab-button>
+      </ng-container>
+    </ion-fab>
+  </div>
+</ion-content>
+
+<ng-template #running>
+  <ion-fab-button (click)="stopTime()">
+    <ion-icon name="square"></ion-icon>
+  </ion-fab-button>
+</ng-template>

@@ -29,6 +29,11 @@ export class AppComponent {
       title: "Pelis APP",
       url: "/pelis",
       icon: "videocam"
+    },
+    {
+      title: "Cronometro",
+      url: "/cronometro",
+      icon: "alarm"
     }
   ];
 

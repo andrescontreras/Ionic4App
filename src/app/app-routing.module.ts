@@ -25,7 +25,8 @@ const routes: Routes = [
   {
     path: "pelis/:id",
     loadChildren: "./pages/pelis/details/details.module#DetailsPageModule"
-  }
+  },
+  { path: 'cronometro', loadChildren: './pages/cronometro/cronometro.module#CronometroPageModule' }
 ];
 
 @NgModule({
